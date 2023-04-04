@@ -201,7 +201,7 @@ public class Project2{
       // outer loop is for the rows
       // inner loop is for the column for each row
       for(i = 1; i <= height; i ++){ // rows
-        for(j = 1; j <= height-1; j++){ // columns 
+        for(j = 1; j <= height-i; j++){ // columns 
           System.out.print(" ");
             }
             System.out.print("/");
