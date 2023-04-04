@@ -85,8 +85,7 @@ public class Project2{
       drawDiamond(fillChar, edgeChar, size);
       }
       
- 
-       
+   
     public static void drawDiamond(char fillChar, char edgeChar, int size){ // check if this is right, hacked it 
          int middle = size / 2;
         for (int row = 0; row < size; row++) {
@@ -118,8 +117,7 @@ public class Project2{
         }
     }
     
-    
-
+   
     // Rectangle 
     public static void rectangle(){
       
@@ -141,7 +139,7 @@ public class Project2{
           }
       }
      
-      System.out.print("Do you want the rectangle to be hollow or filled (true for hollow): ");
+      System.out.print("Do you want the rectangle to be hollow or filled (true for hollow false for filled): ");
       boolean hollowRect = CONSOLE.nextBoolean();
                   
      
@@ -187,12 +185,12 @@ public class Project2{
            System.out.print("Invalid, enter an even number greater than 0 but less than or equal to 60");
            continue; // Without contine it would completely exit the loop. 
           }
+         
           else{
             break;  
           }
-          
       }
-      drawTriangle(width);
+      drawTriangle(widthTri);
     }
     
     public static void drawTriangle(int width){
@@ -202,8 +200,8 @@ public class Project2{
       int height = (width / 2);
       // outer loop is for the rows
       // inner loop is for the column for each row
-      for(i = 0; i <= height; i ++){ // rows
-        for(j = 0; j <= width; j++){ // columns 
+      for(i = 1; i <= height; i ++){ // rows
+        for(j = 1; j <= height-1; j++){ // columns 
           System.out.print(" ");
             }
             System.out.print("/");
@@ -220,8 +218,7 @@ public class Project2{
     }
 
       
-      
-    
+     
     
     // Extra Credit 
     public static void drawpattern(){
