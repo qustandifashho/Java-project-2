@@ -67,13 +67,13 @@ public class Shaper{
         System.out.println("Please write the char that you would like to be used as edge of diamond ");
         char edgeChar = CONSOLE.nextLine().charAt(0);
         
-        System.out.println("What size do you want the diamon to be drawn? ");
-        System.out.println("Please insert a number between 0 and 60 ");
+        System.out.println("What size do you want the diamond to be drawn? ");
+        System.out.println("Please insert an even number between 0 and 60 ");
         int size = CONSOLE.nextInt();
         
         // Validate user input
         if (size % 2 != 0 || size > 60) {
-            System.out.println("Size must be an odd number no greater than 60.");
+            System.out.println("Size must be an even number no greater than 60.");
             return;
         }
        drawDiamond(fillChar, edgeChar, size);
@@ -121,12 +121,16 @@ public class Shaper{
      // Rectangle 
     public static void rectangle() {
 
-        System.out.println("Enter the character to draw the rectangle with: ");
+        System.out.println("Please write the char that you would like to be used as the contour of the rectangle ");
         char charRect = CONSOLE.next().charAt(0);
+        
+        System.out.println("Do you want the rectangle to be hollow (Y/N): ");
+        char hollowRect = CONSOLE.next().charAt(0);
 
         int sizeRect = 0;
         while(true) {
-            System.out.println("Enter the size of the rectangle: ");
+            System.out.println("What size do you want the rectangle to be drawn? ");
+            System.out.println("Please insert any number between 0 and 60 ");
             sizeRect = CONSOLE.nextInt();
             if(sizeRect < 0 || sizeRect >= 60) {
                 System.out.print("Invalid, enter a greater than 0 but less than or equal to 60");
@@ -136,8 +140,7 @@ public class Shaper{
             }
         }
   
-        System.out.println("Do you want the rectangle to be hollow (Y/N): ");
-        char hollowRect = CONSOLE.next().charAt(0);
+        
 
         drawRectangle(charRect, sizeRect, hollowRect); 
     }
@@ -168,57 +171,14 @@ public class Shaper{
     }
 
 
-/*
-    // Rectangle 
-    public static void rectangle(){
-      System.out.println("Please write the char that you would like to be used as the contour of the rectangle ");
-      char charRect = CONSOLE.next().charAt(0);
-    
-      System.out.println("Do you want the rectangle printed to be hollow? (Y/N) ");
-      char filledRect = CONSOLE.next().charAt(0);
-  
-      int sizeRect = 0;
-      while(true){
-        System.out.println("What size do you want the rectangle to be drawn? ");
-        System.out.println("Please insert any value from 0 to 60 ");
-           sizeRect = CONSOLE.nextInt();
-           if(sizeRect < 0 || sizeRect >= 60){
-             System.out.print("Invalid, enter a greater than 0 but less than or equal to 60");
-             continue;
-        }
-        else{
-          break;  
-        }
-    }
-   
-    
-                
-    drawRectangle(charRect, sizeRect, filledRect ); 
-  }
-  
-  public static void drawRectangle(char chr, int size, char filled){
-    for (int i = 0; i < size; i++) {
-        drawRectangleLine(chr, size, filled == 'N' || (filled == 'Y' && (i == 0 || i == size-1)));
-    }
-  }
-  
-  public static void drawRectangleLine(char chr, int size, boolean filled){
-      for (int i = 0; i < size; i++) {
-          System.out.print(chr);
-      }
-      System.out.println();
-  }
-  */
-  
-
-
     
     // Triangle 
     
     public static void triangle(){
       int widthTri = 0;
       while(true){
-       System.out.println("Enter the width of the triangle you want: ");
+       System.out.println("What size do you want the Triangle to be drawn? ");
+       System.out.println("Please enter an even number between 0 and 60");
          widthTri = CONSOLE.nextInt();
          System.out.println();
          if(widthTri <= 0 || widthTri >= 60 || widthTri%2 != 0){
