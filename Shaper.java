@@ -72,42 +72,21 @@ public class Shaper{
         int size = CONSOLE.nextInt();
         
         // Prompt user for input and validate
-        //System.out.println("What size do you want the diamond to be drawn? ");
-        //int sizeDiamond = -1;
         boolean validInput = false;
         while (!validInput) {
-            //sizeDiamond = CONSOLE.nextInt();
-            //System.out.println("Entered while loop"); //Testingn
-            if (size % 2 != 0 || size < 0 || size > 60) 
-            {
-              
+          if (size % 2 != 0 || size < 0 || size > 60){ 
               System.out.println("Incorrect option. Please try again ");
-              System.out.println("What size do you want the diamond to be drawn ");
+              System.out.println("What size do you want the diamond to be drawn? ");
               System.out.println("Please enter an even number between 0 and 60 ");
               size = CONSOLE.nextInt();
             }
-              
                else {
                 validInput = true;
                }
-    
 }
 
 drawDiamond(fillChar, edgeChar, size);
     }
-
-
-        
-        
-        /* 
-        // Validate user input /// NEED TO DO A WHILE LOOP HERE I BELIEVE 
-        if (size % 2 != 0 || size > 60) {
-            System.out.println("Size must be an even number no greater than 60.");
-            return;
-        }
-       drawDiamond(fillChar, edgeChar, size);
-    }
-    */
       
    
     public static void drawDiamond(char fillChar, char edgeChar, int size){
@@ -144,10 +123,68 @@ drawDiamond(fillChar, edgeChar, size);
     }
     
     
+       // Correct Rectangle
+    public static void rectangle() {
+        Scanner input = new Scanner(System.in);
     
+        System.out.println("Please write the character that you would like to be used as the contour of the rectangle: ");
+        char charRect = input.next().charAt(0);
+        
+        char hollowRect;
+        while (true) {
+            System.out.println("Do you want the rectangle to be hollow (Y/N): ");
+            String userInput = input.next().toUpperCase();
+            if (userInput.equals("Y")) {
+                hollowRect = 'Y';
+                break;
+            } else if (userInput.equals("N")) {
+                hollowRect = 'N';
+                break;
+            } else {
+                System.out.println("This value is incorrect, input Y or N.");
+            }
+        }
     
+        int sizeRect = 0;
+        while (true) {
+            System.out.println("What size do you want the rectangle to be drawn?");
+            System.out.println("Please insert any number between 0 and 60.");
+            sizeRect = input.nextInt();
+            if (sizeRect < 1 || sizeRect > 60) {
+                System.out.println("Invalid input. Enter a number between 1 and 60.");
+            } else {
+                break;
+            }
+        }
+        
+        drawRectangle(charRect, sizeRect, hollowRect);
+    }
     
+    public static void drawRectangle(char chr, int size, char hollow) {
+        boolean isHollow = (hollow == 'Y');
+        for (int i = 0; i < size; i++) {
+            drawRectangleLine(chr, size, isHollow && (i != 0 && i != size-1));
+        }
+    }
     
+    public static void drawRectangleLine(char chr, int size, boolean hollow) {
+        if (hollow) {
+            System.out.print(chr);
+            for (int i = 1; i < size-1; i++) {
+                System.out.print(" ");
+            }
+            if (size > 1) {
+                System.out.println(chr); 
+            }
+        } else {
+            for (int i = 0; i < size; i++) {
+                System.out.print(chr);
+            }
+            System.out.println();
+        }
+    }
+    
+    /*
      // Rectangle 
     public static void rectangle() {
 
@@ -163,7 +200,7 @@ drawDiamond(fillChar, edgeChar, size);
             System.out.println("Please insert any number between 0 and 60 ");
             sizeRect = CONSOLE.nextInt();
             if(sizeRect < 0 || sizeRect >= 60) {
-                System.out.print("Invalid, enter a greater than 0 but less than or equal to 60");
+                System.out.println("Invalid, enter a greater than 0 but less than or equal to 60");
                 continue;
             } else {
                 break;  
@@ -199,6 +236,7 @@ drawDiamond(fillChar, edgeChar, size);
             System.out.println();
         }
     }
+    */
 
 
     
