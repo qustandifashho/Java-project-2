@@ -10,7 +10,7 @@ public class Shaper{
 
   
     public static void showMenu(){
-      System.out.println();
+      //System.out.println();
       System.out.println("Please, select one of the following options");
       System.out.println("0. Exit");
       System.out.println("1. Draw a Diamond");
@@ -23,9 +23,9 @@ public class Shaper{
     public static void getMenuSelection(){
       while(true){
         showMenu();
-        System.out.println("Enter a number from 0 to 4 ");
+        //System.out.println("Enter a number from 0 to 4 ");
         int menuNum = CONSOLE.nextInt();
-        //System.out.println(); // See if I need this when running it!!!!
+
         
         if(menuNum == 0){
           System.out.print("Thank you for using the Shaper program, Good bye!" );
@@ -49,7 +49,7 @@ public class Shaper{
           continue;
         }
         else{
-          System.out.print("Incorrect option, please, try again");
+          System.out.println("Incorrect option, please, try again");
         }
       } 
     }    
@@ -61,13 +61,14 @@ public class Shaper{
      Scanner CONSOLE = new Scanner(System.in);
         
         // Prompt user for input
-        System.out.println("Enter the edge character: ");
-        char edgeChar = CONSOLE.nextLine().charAt(0);
-        
-        System.out.println("Enter the fill character: ");
+        System.out.println("Please write the char that you would like to be used to fill the diamond ");
         char fillChar = CONSOLE.nextLine().charAt(0);
         
-        System.out.println("Enter the size: ");
+        System.out.println("Please write the char that you would like to be used as edge of diamond ");
+        char edgeChar = CONSOLE.nextLine().charAt(0);
+        
+        System.out.println("What size do you want the diamon to be drawn? ");
+        System.out.println("Please insert a number between 0 and 60 ");
         int size = CONSOLE.nextInt();
         
         // Validate user input
@@ -112,50 +113,44 @@ public class Shaper{
         }
     }
     
-   
-    // Rectangle 
-    public static void rectangle(){
-      
-      System.out.print("Enter the character to draw the rectangle with: ");
-      char charRect = CONSOLE.next().charAt(0);
-      //System.out.println();
     
-      int sizeRect = 0;
-      while(true){
-        System.out.print("Enter the size of the rectangle: ");
-          sizeRect = CONSOLE.nextInt();
-          //System.out.println();
-          if(sizeRect < 0 || sizeRect >= 60){
-            System.out.print("Invalid, enter a greater than 0 but less than or equal to 60");
-            continue;
-          }
-          else{
-            break;  
-          }
-      }
-     
-      System.out.print("Do you want the rectangle to be hollow or filled (true for hollow false for filled): ");
-      boolean hollowRect = CONSOLE.nextBoolean();
-                  
-     
-      drawRectangle(charRect, sizeRect, hollowRect ); 
+    
+    
+    
+    
+     // Rectangle 
+    public static void rectangle() {
+
+        System.out.println("Enter the character to draw the rectangle with: ");
+        char charRect = CONSOLE.next().charAt(0);
+
+        int sizeRect = 0;
+        while(true) {
+            System.out.println("Enter the size of the rectangle: ");
+            sizeRect = CONSOLE.nextInt();
+            if(sizeRect < 0 || sizeRect >= 60) {
+                System.out.print("Invalid, enter a greater than 0 but less than or equal to 60");
+                continue;
+            } else {
+                break;  
+            }
+        }
+  
+        System.out.println("Do you want the rectangle to be hollow (Y/N): ");
+        char hollowRect = CONSOLE.next().charAt(0);
+
+        drawRectangle(charRect, sizeRect, hollowRect); 
     }
 
-    public static void drawRectangle(char chr, int size, boolean hollow){
-      // We are just printing the rectangle here, so use a for loop.
-            for (int i = 0; i < size; i++) {
-            drawRectangleLine(chr, size, hollow && (i != 0 && i != size-1));
+    public static void drawRectangle(char chr, int size, char hollow) {
+        boolean isHollow = (hollow == 'Y');
+        for (int i = 0; i < size; i++) {
+            drawRectangleLine(chr, size, isHollow && (i != 0 && i != size-1));
         }
     }
 
-  
-  
-    public static void drawRectangleLine(char chr, int size, boolean hollow){
-            if (!hollow) {
-            for (int i = 0; i < size; i++) {
-                System.out.print(chr);
-            }
-        } else {
+    public static void drawRectangleLine(char chr, int size, boolean hollow) {
+        if (hollow) {
             System.out.print(chr);
             for (int i = 1; i < size-1; i++) {
                 System.out.print(" ");
@@ -163,10 +158,58 @@ public class Shaper{
             if (size > 1) {
                 System.out.println(chr); 
             }
+        } 
+        else {
+            for (int i = 0; i < size; i++) {
+                System.out.print(chr);
+            }
+            System.out.println();
         }
-        System.out.println();
-
     }
+
+
+/*
+    // Rectangle 
+    public static void rectangle(){
+      System.out.println("Please write the char that you would like to be used as the contour of the rectangle ");
+      char charRect = CONSOLE.next().charAt(0);
+    
+      System.out.println("Do you want the rectangle printed to be hollow? (Y/N) ");
+      char filledRect = CONSOLE.next().charAt(0);
+  
+      int sizeRect = 0;
+      while(true){
+        System.out.println("What size do you want the rectangle to be drawn? ");
+        System.out.println("Please insert any value from 0 to 60 ");
+           sizeRect = CONSOLE.nextInt();
+           if(sizeRect < 0 || sizeRect >= 60){
+             System.out.print("Invalid, enter a greater than 0 but less than or equal to 60");
+             continue;
+        }
+        else{
+          break;  
+        }
+    }
+   
+    
+                
+    drawRectangle(charRect, sizeRect, filledRect ); 
+  }
+  
+  public static void drawRectangle(char chr, int size, char filled){
+    for (int i = 0; i < size; i++) {
+        drawRectangleLine(chr, size, filled == 'N' || (filled == 'Y' && (i == 0 || i == size-1)));
+    }
+  }
+  
+  public static void drawRectangleLine(char chr, int size, boolean filled){
+      for (int i = 0; i < size; i++) {
+          System.out.print(chr);
+      }
+      System.out.println();
+  }
+  */
+  
 
 
     
@@ -175,11 +218,11 @@ public class Shaper{
     public static void triangle(){
       int widthTri = 0;
       while(true){
-       System.out.print("Enter the width of the triangle you want: ");
+       System.out.println("Enter the width of the triangle you want: ");
          widthTri = CONSOLE.nextInt();
          System.out.println();
          if(widthTri <= 0 || widthTri >= 60 || widthTri%2 != 0){
-           System.out.print("Invalid, enter an even number greater than 0 but less than or equal to 60");
+           System.out.println("Invalid, enter an even number greater than 0 but less than or equal to 60");
            continue; // Without contine it would completely exit the loop. 
           }
          
@@ -216,7 +259,6 @@ public class Shaper{
 
       
      
-    
     // Extra Credit 
     public static void drawpattern(){
     }
