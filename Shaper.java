@@ -81,7 +81,9 @@ public class Shaper{
             if (size % 2 != 0 || size < 0 || size > 60) 
             {
               
-              System.out.println("Invalid input. Please insert an even number between 0 and 60 ");
+              System.out.println("Incorrect option. Please try again ");
+              System.out.println("What size do you want the diamond to be drawn ");
+              System.out.println("Please enter an even number between 0 and 60 ");
               size = CONSOLE.nextInt();
             }
               
