@@ -71,13 +71,41 @@ public class Shaper{
         System.out.println("Please insert an even number between 0 and 60 ");
         int size = CONSOLE.nextInt();
         
-        // Validate user input
+        // Prompt user for input and validate
+        //System.out.println("What size do you want the diamond to be drawn? ");
+        //int sizeDiamond = -1;
+        boolean validInput = false;
+        while (!validInput) {
+            //sizeDiamond = CONSOLE.nextInt();
+            //System.out.println("Entered while loop"); //Testingn
+            if (size % 2 != 0 || size < 0 || size > 60) 
+            {
+              
+              System.out.println("Invalid input. Please insert an even number between 0 and 60 ");
+              size = CONSOLE.nextInt();
+            }
+              
+               else {
+                validInput = true;
+               }
+    
+}
+
+drawDiamond(fillChar, edgeChar, size);
+    }
+
+
+        
+        
+        /* 
+        // Validate user input /// NEED TO DO A WHILE LOOP HERE I BELIEVE 
         if (size % 2 != 0 || size > 60) {
             System.out.println("Size must be an even number no greater than 60.");
             return;
         }
        drawDiamond(fillChar, edgeChar, size);
     }
+    */
       
    
     public static void drawDiamond(char fillChar, char edgeChar, int size){
