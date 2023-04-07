@@ -10,7 +10,6 @@ public class Shaper{
 
   
     public static void showMenu(){
-      //System.out.println();
       System.out.println("Please, select one of the following options");
       System.out.println("0. Exit");
       System.out.println("1. Draw a Diamond");
@@ -23,7 +22,6 @@ public class Shaper{
     public static void getMenuSelection(){
       while(true){
         showMenu();
-        //System.out.println("Enter a number from 0 to 4 ");
         int menuNum = CONSOLE.nextInt();
 
         
@@ -44,10 +42,14 @@ public class Shaper{
           triangle();
           continue;
         }
+        /*
         else if(menuNum == 4){
           drawpattern(); // is this drawPattern ot drawpattern
           continue;
+          
         }
+        */
+        
         else{
           System.out.println("Incorrect option, please, try again");
         }
@@ -141,7 +143,7 @@ drawDiamond(fillChar, edgeChar, size);
                 hollowRect = 'N';
                 break;
             } else {
-                System.out.println("This value is incorrect, input Y or N.");
+                System.out.println("Incorrect selection, please try again ");
             }
         }
     
@@ -184,64 +186,8 @@ drawDiamond(fillChar, edgeChar, size);
         }
     }
     
-    /*
-     // Rectangle 
-    public static void rectangle() {
-
-        System.out.println("Please write the char that you would like to be used as the contour of the rectangle ");
-        char charRect = CONSOLE.next().charAt(0);
-        
-        System.out.println("Do you want the rectangle to be hollow (Y/N): ");
-        char hollowRect = CONSOLE.next().charAt(0);
-
-        int sizeRect = 0;
-        while(true) {
-            System.out.println("What size do you want the rectangle to be drawn? ");
-            System.out.println("Please insert any number between 0 and 60 ");
-            sizeRect = CONSOLE.nextInt();
-            if(sizeRect < 0 || sizeRect >= 60) {
-                System.out.println("Invalid, enter a greater than 0 but less than or equal to 60");
-                continue;
-            } else {
-                break;  
-            }
-        }
-  
-        
-
-        drawRectangle(charRect, sizeRect, hollowRect); 
-    }
-
-    public static void drawRectangle(char chr, int size, char hollow) {
-        boolean isHollow = (hollow == 'Y');
-        for (int i = 0; i < size; i++) {
-            drawRectangleLine(chr, size, isHollow && (i != 0 && i != size-1));
-        }
-    }
-
-    public static void drawRectangleLine(char chr, int size, boolean hollow) {
-        if (hollow) {
-            System.out.print(chr);
-            for (int i = 1; i < size-1; i++) {
-                System.out.print(" ");
-            }
-            if (size > 1) {
-                System.out.println(chr); 
-            }
-        } 
-        else {
-            for (int i = 0; i < size; i++) {
-                System.out.print(chr);
-            }
-            System.out.println();
-        }
-    }
-    */
-
-
-    
+   
     // Triangle 
-    
     public static void triangle(){
       int widthTri = 0;
       while(true){
@@ -279,18 +225,11 @@ drawDiamond(fillChar, edgeChar, size);
             System.out.print("\\");
             System.out.println();
         }
-        for (i = 1; i <= width; i++) {
+   5     for (i = 1; i <= width; i++) {
             System.out.print("-");
         }
         System.out.println();
     }
+}
 
       
-     
-    // Extra Credit 
-    public static void drawpattern(){
-    }
-    
-    public static void drawPattern(char char1, char char2, boolean ascending){
-    }
-}
